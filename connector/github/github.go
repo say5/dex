@@ -679,7 +679,7 @@ func (c *githubConnector) teamsForOrg(ctx context.Context, client *http.Client, 
 		}
 
 		for _, t := range teams {
-			if t.Org.Login == orgName {
+			if strings.ToLower(t.Org.Login) == strings.ToLower(orgName) {
 				groups = append(groups, c.teamGroupClaims(t)...)
 			}
 		}
